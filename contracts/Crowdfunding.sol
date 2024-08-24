@@ -16,6 +16,7 @@ contract Crowdfunding {
 
     mapping (string => Campaign) public campaigns; //unique idenfyer to store campaign with
 
+    //This allows only the owner to call a fuction that it is added to 
      modifier onlyOwner() {
         require(msg.sender == owner, "You are not the contract owner");
         _;
@@ -29,7 +30,7 @@ contract Crowdfunding {
         owner = msg.sender;
     }
 
-    //function to create a campaign
+    //function to create a campaign. has onlyowner to allow only the owner of the contract to call it 
     function createCampaign(string memory _campaignId,string memory _title, string memory _description, address payable _benefactor, uint256 _goal, uint256 _deadline) public onlyOwner {
         require(_goal>0,"goal amount cannot be zero"); //check that the amount in the goal is not zero 
         require(_deadline > block.timestamp,"Deadline must be in the future"); //check that deadline not less that the current time and in the future

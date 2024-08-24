@@ -71,8 +71,9 @@ contract Crowdfunding {
 
         uint256 amountDonatedToBeneficiary = campaign.amountRaised;
         campaign.benefactor.transfer(amountDonatedToBeneficiary); // send donated/raised amout to beneficiary
+        campaign.amountRaised=0; //reset the amount that is raised back to zero since all has been transfered to beneficiary
 
-        emit CampaignEnded(_campaignId); 
+        emit CampaignEnded(_campaignId); //emit campaign end  details to the blockchain.
     }
 
 

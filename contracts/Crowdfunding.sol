@@ -37,7 +37,7 @@ contract Crowdfunding {
     function createCampaign(string memory _campaignId,string memory _title, string memory _description, address payable _benefactor, uint256 _goal, uint256 _deadline) public onlyOwner {
         require(_goal>0,"goal amount cannot be zero"); //check that the amount in the goal is not zero 
         require(_deadline > block.timestamp,"Deadline must be in the future"); //check that deadline not less that the current time and in the future
-        campaigns[_campaignId] = Campaign({
+        campaigns[_campaignId] = Campaign({ //to create an instantiation of the campaign struct for the inputed data to create campaign
             tittle: _title,
             description: _description,
             benefactor: _benefactor,

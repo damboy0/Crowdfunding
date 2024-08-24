@@ -48,7 +48,7 @@ contract Crowdfunding {
     function donateToCampaign(string memory _campaignId) public payable{
         require(msg.value > 0,"Amout to donate must be more than zero"); //msg.value is the value of the ether donates 
 
-        Campaign storage campaign = campaigns[_campaignId];
+        Campaign storage campaign = campaigns[_campaignId]; // to retrieve the campaign mapping from the struct
         campaign.amountRaised += msg.value;
 
         emit DonationReceived(_campaignId,msg.value);
@@ -58,5 +58,7 @@ contract Crowdfunding {
     //function to endcampaign
     function endCampaign(string memory _campaignId,uint256 _deadline) public onlyOwner {
         require( _deadline != block.timestamp);
+
+        Campaign storage campaign = campaigns[_campaignId]; // to retrieve the campaign mapping from the struct
     }
 }

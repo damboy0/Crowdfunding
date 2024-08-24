@@ -48,7 +48,9 @@ contract Crowdfunding {
     function donateToCampaign(string memory campaignId, uint256 _donationAmount) public {
         
     }
-    function endCampaign() public {
-        
+
+    //function to endcampaign
+    function endCampaign(string memory _campaignId,uint256 _deadline) public onlyOwner {
+        require( _deadline != block.timestamp);
     }
 }

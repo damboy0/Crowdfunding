@@ -70,9 +70,9 @@ contract Crowdfunding {
         require(!campaign.ended, "Campaign has already ended"); // to check if campaign has ended. 
 
         uint256 amountDonatedToBeneficiary = campaign.amountRaised;
-        campaign.benefactor.transfer(amountDonatedToBeneficiary);
+        campaign.benefactor.transfer(amountDonatedToBeneficiary); // send donated/raised amout to beneficiary
 
-        emit CampaignEnded(_campaignId);
+        emit CampaignEnded(_campaignId); 
     }
 
 
